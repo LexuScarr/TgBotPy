@@ -2,7 +2,6 @@ from aiogram import types, executor, Dispatcher, Bot
 import requests
 from bs4 import BeautifulSoup
 
-
 bot = Bot('token TG bots')
 dp = Dispatcher(bot)
 
@@ -32,8 +31,6 @@ async def parser(message: types.message):
 #поиск названий аниме
         nazvanie = soup.find('div', {"class" :'anime-title'})
         nazvanie1 = nazvanie.find('h1').text
-        # for nazvanie1 in nazvanie:
-        #     nazvanie1 = nazvanie1.text
 
 #вывод названий и ссылки на аниме
         # await bot.send_message(message.chat.id, "Нашёл пару аниме для тебя: " + '\n' + nazvanie1 + '\n' + f"<a href='{url}'>Ссылка на анимеху</a>", parse_mode="html")
@@ -43,9 +40,6 @@ async def parser(message: types.message):
         img1 = img1['src']
 #вывод фото, названий и ссылки на аниме
         await bot.send_photo(message.chat.id, img1, "Нашёл пару аниме для тебя: " + '\n' + nazvanie1 + '\n' + f"<a href='{url}'>Ссылка на анимеху</a>", parse_mode="html")
-
-
-
 
 #Остановка цикла тремя выводами
         if all_links.index(link) == 2:
